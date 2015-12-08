@@ -10,20 +10,20 @@ end
 
 # Create new question
 post '/properties' do
-	question = Question.new(title: params[:title], user_id: session[:user_id])
-	if question.save
-	redirect "/users/#{question.user_id}"
+	property = Property.new(title: params[:title], price: params[:price], location: params[:location], user_id: session[:user_id])
+	if property.save
+		byebug
+	redirect "/users/#{property.user_id}"
 	else
 		@warning = "Sorry, there's something wrong with your question"
-		erb :"questions/new"
+		erb :"properties/new"
 	end
-	# redirect "/users/#{question.user_id}"
 end
 
 # View question
 get '/properties/:id' do
-	@question = Question.find(params[:id])
-	erb :'questions/show'
+	@question = Property.find(params[:id])
+	erb :'properties/show'
 end
 
 # Display question edit form

@@ -13,3 +13,8 @@ Email: <%= @user.email %><br>
 <a href="/users/logout">
 <Button>Logout</Button>
 </a>
+<% byebug %>
+<% @user.properties.each do |property| %>
+	<a href="/properties/<%= property.id %>"><%= property.title %></a>
+	<br>
+<% end %>
