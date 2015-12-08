@@ -1,0 +1,10 @@
+<!--First is to iterate though the set of questions to get individual ones -->
+<h2> List of properties posted </h2>
+<% properties = Property.all %>
+	<% if properties.count == 0 %>
+		No Properties posted yet. Be the first?
+	<% else %>
+		<% properties.each do |property| %>
+		 <a href="/properties/<%= property.id %>"><%= property.title %></a> by <%= property.user.name%>
+	<% end %>
+<% end %><br>
