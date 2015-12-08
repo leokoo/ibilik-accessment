@@ -18,4 +18,5 @@ class User < ActiveRecord::Base
 # Associations
 	has_many :properties
 	has_many :comments
+	has_many :bookings
 end
