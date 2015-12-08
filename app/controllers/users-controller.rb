@@ -10,18 +10,18 @@ post '/signup' do
 	end
 end
 
-# # Read
-# # Reading the user login
-# post '/users/login' do
-# 	user = User.authenticate(params[:email], params[:password])
-# 	if user
-# 		session[:user_id] = user.id
-# 		redirect "/users/#{user.id}"
-# 	else
-# 		@warning = "Login failed, please try again"
-# 		erb :"users/login"
-# 	end
-# end
+# Read
+# Reading the user login
+post '/users/login' do
+	user = User.authenticate(params[:email], params[:password])
+	if user
+		session[:user_id] = user.id
+		redirect "/users/#{user.id}"
+	else
+		@warning = "Login failed, please try again"
+		erb :"users/login"
+	end
+end
 
 # User logout
 get '/users/logout' do
@@ -30,6 +30,11 @@ get '/users/logout' do
 end
 
 # Read the route for user signup
+get '/users/signup' do
+	erb :"users/signup"
+end
+
+# Read the route for user login
 get '/users/login' do
 	erb :"users/login"
 end
