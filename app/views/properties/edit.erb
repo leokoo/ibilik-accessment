@@ -1,5 +1,8 @@
 <h1>Edit Property</h1>
 
+You are editing the property named <b><%= @property.title %></b><br>
+Owned by <%= @property.user.name %><br><br>
+
 <form action="/properties/<%= @property.id %>" method="post">
 	<input type="hidden" name="_method" value="patch">
 	<label>Property Name: </label>
@@ -7,5 +10,6 @@
 	<label> Property Location: </label>
 	<input type="text" name="location" value="<%= @property.location%>"><br>
 	<label> Monthly Rent: </label>
+	<input type="number" name="price" value="<%= @property.price%>"><br>
 	<input type="submit" value="Update property">
 </form>

@@ -34,14 +34,14 @@ end
 
 # Update question
 patch '/properties/:id' do
-	question = Question.find(params[:id])
-	question.update(title: params[:title])
-	redirect "/questions/#{question.id}"
+	property = Property.find(params[:id])
+	property.update(title: params[:title], price: params[:price], location: params[:location])
+	redirect "/properties/#{property.id}"
 end
 
 # Delete question
 delete '/properties/:id' do
-	question = Question.find(params[:id])
-	question.destroy
-	erb :'static/index'
+	property = Property.find(params[:id])
+	property.destroy
+	erb :"properties/all"
 end
