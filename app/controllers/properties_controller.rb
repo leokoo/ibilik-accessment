@@ -22,14 +22,14 @@ end
 
 # View question
 get '/properties/:id' do
-	@question = Property.find(params[:id])
+	@property = Property.find(params[:id])
 	erb :'properties/show'
 end
 
 # Display question edit form
 get '/properties/:id/edit' do
-	@question = Question.find(params[:id])
-	erb :'questions/edit'
+	@property = Property.find(params[:id])
+	erb :'properties/edit'
 end 
 
 # Update question

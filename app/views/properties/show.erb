@@ -1,5 +1,10 @@
 <h1><%= @property.title %></h1>
-by <%= @property.user.name%><br>
+ 
+Owner : <%= @property.user.name%><br>
+Location : <%= @property.location %><br>
+Monthly Rent : <%= @property.price %><br>
+Availability : This feature hasn't been implemented yet!<br>
+Comments : We're implementing this very soon! <br>
 
 <a href="/properties/<%= @property.id %>/edit">
 <button>Edit property</button>

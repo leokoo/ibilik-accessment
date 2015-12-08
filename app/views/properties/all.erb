@@ -5,6 +5,12 @@
 		No Properties posted yet. Be the first?
 	<% else %>
 		<% properties.each do |property| %>
-		 <a href="/properties/<%= property.id %>"><%= property.title %></a> by <%= property.user.name%>
+		 <a href="/properties/<%= property.id %>"><%= property.title %></a><br> 
+		Owner : <%= property.user.name%><br>
+		Location : <%= property.location %><br>
+		Price : <%= property.price %><br>
+		Availability : This feature hasn't been implemented yet!<br>
+		Comments : We're implementing this very soon! <br>
+
 	<% end %>
 <% end %><br>
