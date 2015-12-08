@@ -25,5 +25,5 @@ Email: <%= @user.email %><br>
 <% @user.bookings.each_with_index do |booking, index| %>
 <%= index + 1 %>) 
 <a href="/bookings/<%= booking.id %>">
-<%= booking.property.title %> for <%= booking.length %> month(s) </a>
+<%= booking.property.title %> for <%= booking.length %> month(s)</a><br>
 <% end %>

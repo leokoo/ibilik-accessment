@@ -1,3 +1,8 @@
+# Insert a new comment
+get '/comments/new' do
+	erb :"comments/new"
+end
+
 # Create new comment
 post '/comments' do
 	comment = Comment.create(reply: params[:reply], user_id: session[:user_id], property_id: params[:property_id])
