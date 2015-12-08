@@ -12,10 +12,18 @@ Email: <%= @user.email %><br>
 
 <a href="/users/logout">
 <Button>Logout</Button>
-</a>
+</a><br>
 
-Properties Listed:<br><br>
+<h3>You have the following properties listed:</h3>
 <% @user.properties.each_with_index do |property, index| %>
-	<%= index + 1 %>) <a href="/properties/<%= property.id %>"><%= property.title %>, Location: <%= property.location %>, Price: RM<%= property.price %>/month</a>
+	<%= index + 1 %>) <a href="/properties/<%= property.id %>">
+	<%= property.title %>, Location: <%= property.location %>, Price: RM<%= property.price %>/month</a>
 	<br>
-	<% end %>
+<% end %>
+
+<h3>You have booked the following properties</h3>
+<% @user.bookings.each_with_index do |booking, index| %>
+<%= index + 1 %>) 
+<a href="/bookings/<%= booking.id %>">
+<%= booking.property.title %> for <%= booking.length %> month(s) </a>
+<% end %>
