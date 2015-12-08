@@ -5,6 +5,7 @@ Booked by
 How many months
 <%= @booking.length %> <br>
 
+<% if @booking.user.id == session[:user_id] %>
 <a href="/bookings/<%= @booking.id %>/edit">
 <button>Edit booking</button>
 </a>
@@ -13,3 +14,4 @@ How many months
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete">
 </form>
+<% end %>

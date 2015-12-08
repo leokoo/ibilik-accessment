@@ -1,39 +1,51 @@
 <!--First is to iterate though the set of questions to get individual ones -->
-<h2> List of properties posted </h2>
+
 <% properties = Property.all %>
 	<% if properties.count == 0 %>
-		No Properties posted yet. Be the first?
+	<h2> No Properties posted yet. Be the first? </h2>
 	<% else %>
+	<h2> List of properties posted </h2>
 		<% properties.each_with_index do |property, index| %>
 		 <%= index + 1 %>) <a href="/properties/<%= property.id %>"><%= property.title %></a>
 		-- Owner : <%= property.user.name%><br>
 		Location : <%= property.location %><br>
 		Price : <%= property.price %><br>
 
+		<!--If the property's owner is the same as the currently logged in user, he cannot book-->
 		<% if property.user_id == session[:user_id] %>
 				You're the owner <br>
 		<% else %>
-				You can book<br>
+
+		<!--If there is no booking yet, we display the buttons-->
 			<% if property.booking.nil? == true %>
 				<form action="/properties/<%= property.id %>/book" method="POST">
 				<label>How many months: </label>
 				<input type="number" name="length" placeholder="2000"><br>
 				<input type="submit" value="book property"></form>
 			<% else %><br>
-				Booking Details <br>
-				<a href="/bookings/<%= property.booking.id %>"><button>See your booking</button></a>
 
-				<form action="/properties/<%= property.id %>/reset" method="POST">
-				<input type="submit" value="reset your booking"></form>
+		<!--If there is a booking, we display the booking details-->
+				Booking Details <br>
+				This place has been booked by : <%= property.booking.user.name %><br>
+				<a href="/bookings/<%= property.booking.id %>"><button>See the booking</button></a><br><br>
+		
+		<!--Now we want to prevent the non-booker to reset his/her booking-->
+				<% if property.booking.user.id == current_user.id %>
+					<form action="/properties/<%= property.id %>/reset" method="POST">
+					<input type="submit" value="reset your booking"></form>
+				<% end %>
 			<% end %>
 		<% end %>
 
+		<!--If there are no comments, we hide the comments-->
+	<% if property.comments.count != 0 %>
 		Comments : <br>
-	<% property.comments.each_with_index do |comment, index| %>
+		<% property.comments.each_with_index do |comment, index| %>
 		<%= index + 1 %>) <a href="/comments/<%= comment.id %>"><%= comment.reply %></a>
 		 - by <%= comment.user.name %>
 		<br>
 		<% end %>
+	<% end %>
 <br>
 	<% end %>
 <% end %><br>
