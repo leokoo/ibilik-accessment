@@ -1,2 +1,15 @@
 The booked unit is:
-<h3><%= @booking.property %></h3>
+<h3><%= @booking.property.title %></h3><br>
+Booked by
+<%= @booking.user.name %><br>
+How many months
+<%= @booking.length %> <br>
+
+<a href="/bookings/<%= @booking.id %>/edit">
+<button>Edit booking</button>
+</a>
+
+<form action="/bookings/<%= @booking.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>

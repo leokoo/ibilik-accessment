@@ -1,0 +1,10 @@
+<h1>Edit Booking</h1>
+
+You are editing the booking
+
+<form action="/bookings/<%= @booking.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label>How many months </label>
+	<input type="number" name="length" value="<%= @booking.length%>"><br>
+	<input type="submit" value="Update booking">
+</form>

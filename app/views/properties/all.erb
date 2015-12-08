@@ -21,8 +21,7 @@
 				<input type="submit" value="book property"></form>
 			<% else %><br>
 				Booking Details <br>
-				<form action="/bookings/<%= property.booking.id %>" method="POST">
-				<input type="submit" value="See your booking"></form>
+				<a href="/bookings/<%= property.booking.id %>"><button>See your booking</button></a>
 
 				<form action="/properties/<%= property.id %>/reset" method="POST">
 				<input type="submit" value="reset your booking"></form>

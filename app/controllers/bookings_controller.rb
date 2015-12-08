@@ -1,8 +1,7 @@
 # View Booking
-post "/bookings/:id" do
+get "/bookings/:id" do
 	@booking = Booking.find(params[:id])
 	erb :'bookings/show'
-end
 end
 
 # To book
@@ -19,4 +18,24 @@ post "/properties/:id/reset" do
 	property = Property.find(params[:id])
 	property.booking.destroy
 	erb :'properties/all'
+end
+
+# Display booking edit form
+get '/bookings/:id/edit' do
+	@booking = Booking.find(params[:id])
+	erb :'bookings/edit'
+end 
+
+# Update booking
+patch '/bookings/:id' do
+	booking = Booking.find(params[:id])
+	booking.update(length: params[:length])
+	redirect "/bookings/#{booking.id}"
+end
+
+# Delete comment
+delete '/bookings/:id' do
+	booking = Booking.find(params[:id])
+	booking.destroy
+	erb :'static/index'
 end
