@@ -1,0 +1,10 @@
+<h1>Edit Comment</h1>
+
+You are editing the comment "<b><%= @comment.reply %></b>"<br>
+
+<form action="/comments/<%= @comment.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label>The comment: </label>
+	<input type="text" name="reply" value="<%= @comment.reply%>"><br>
+	<input type="submit" value="Update comment">
+</form>

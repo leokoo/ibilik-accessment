@@ -1,5 +1,14 @@
-The answer is:
-<h3><%= @answer.reply %></h3>
+The comment is:
+<h3><%= @comment.reply %></h3>
 
-to the question: <br>
-<h1><%= @answer.question.title %></h1>
+to the property: <br>
+<h1><%= @comment.property.title %></h1>
+
+<a href="/comments/<%= @comment.id %>/edit">
+<button>Edit comment</button>
+</a>
+
+<form action="/comments/<%= @comment.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
