@@ -14,3 +14,22 @@ Comments : We're implementing this very soon! <br>
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete">
 </form>
+
+<h3>Comments</h3>
+<% if @property.comments.count == 0 %>
+	There isn't any comments yet. Enter the first?
+<% else %>
+	<% @property.comments.each_with_index do |comment, index| %>
+		<%= index + 1 %>) <a href="/comments/<%= comment.id %>"><%= comment.reply %></a>
+		 - by <%= comment.user.name %>
+		<br>
+		<% end %>
+<% end %>
+
+<h3> Comment on the property</h3>
+<form action="/comments" method="POST">
+	<label>What do you think of the property. Enter your comment: </label><br>
+	<input type="hidden" name="property_id" value="<%= @property.id %>">
+	<input type="text" name="reply"><br>
+	<input type="submit" value="Post it">
+</form>

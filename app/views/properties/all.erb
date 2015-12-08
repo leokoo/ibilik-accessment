@@ -4,13 +4,18 @@
 	<% if properties.count == 0 %>
 		No Properties posted yet. Be the first?
 	<% else %>
-		<% properties.each do |property| %>
-		 <a href="/properties/<%= property.id %>"><%= property.title %></a><br> 
-		Owner : <%= property.user.name%><br>
+		<% properties.each_with_index do |property, index| %>
+		 <%= index + 1 %>) <a href="/properties/<%= property.id %>"><%= property.title %></a>
+		-- Owner : <%= property.user.name%><br>
 		Location : <%= property.location %><br>
 		Price : <%= property.price %><br>
 		Availability : This feature hasn't been implemented yet!<br>
-		Comments : We're implementing this very soon! <br>
-
+		Comments : <br>
+	<% property.comments.each_with_index do |comment, index| %>
+		<%= index + 1 %>) <a href="/comments/<%= comment.id %>"><%= comment.reply %></a>
+		 - by <%= comment.user.name %>
+		<br>
+		<% end %>
+<br>
 	<% end %>
 <% end %><br>

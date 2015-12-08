@@ -12,7 +12,6 @@ end
 post '/properties' do
 	property = Property.new(title: params[:title], price: params[:price], location: params[:location], user_id: session[:user_id])
 	if property.save
-	byebug
 	redirect "/users/#{property.user_id}"
 	else
 		@warning = "Sorry, there's something wrong with your question"

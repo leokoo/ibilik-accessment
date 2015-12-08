@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 		# puts email
 		User.find_by(email: email).try(:authenticate, password)
 	end
-
+	
+# Associations
 	has_many :properties
+	has_many :comments
 end
